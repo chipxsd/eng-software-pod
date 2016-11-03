@@ -6,7 +6,20 @@
 	//The control card
 	#include <../../../BOARD_SUPPORT/lpcb234r0__board_support.h>
 
+/*******************************************************************************
+PICOMMS MODULE
+*******************************************************************************/
+	#define C_LOCALDEF__LCCM656__ENABLE_THIS_MODULE							1U
+	#if C_LOCALDEF__LCCM656__ENABLE_THIS_MODULE == 1U
 
+		//testing options
+		#define C_LOCALDEF__PICOMMS__ENABLE_TEST_SPEC						0U
+
+		//TODO: See if there's a better path for this
+		//main include file
+		#include "../../../../FIRMWARE/PROJECT_CODE/LCCM656__RLOOP__PI_COMMS/pi_comms.h"
+
+	#endif //C_LOCALDEF__PICOMMS__ENABLE_THIS_MODULE
 
 /*******************************************************************************
 ATA6870N - BATTERY MANAGEMENT DEVICE

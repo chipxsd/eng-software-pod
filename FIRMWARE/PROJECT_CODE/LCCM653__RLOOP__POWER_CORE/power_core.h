@@ -113,6 +113,9 @@
 		void vPWRNODE_NODETEMP__Process(void);
 		Lfloat32 f32PWRNODE_NODETEMP__Get_Temperature_DegC(void);
 
+		//PiComms
+		Luint8 vPWRNODE_PICOMMS_TrySend();
+
 #ifdef WIN32
 		void vPWRNODE_WIN32__Init(void);
 		DLL_DECLARATION void vPWRNODE_WIN32__Set_NodeTemperature(Lfloat32 f32Temperature);

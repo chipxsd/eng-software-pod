@@ -85,7 +85,7 @@ void vPWRNODE__Process(void)
 
 			//setup UART
 			vRM4_SCI__Init(SCI_CHANNEL__2);
-			vRM4_SCI__Set_Baudrate(SCI_CHANNEL__2, 9600U);
+			vRM4_SCI__Set_Baudrate(SCI_CHANNEL__2, 921600U);
 #else
 			//Init any win32 variables
 			vPWRNODE_WIN32__Init();
@@ -196,6 +196,20 @@ void vPWRNODE__Process(void)
 
 	}//switch(sPWRNODE.sInit.sState)
 
+	 //As long as the comm ports are initialized we can send
+	//data to the Pi & Ground Station
+	if (sPWRNODE.sInit.sState > INIT_STATE__COMMS)
+	{
+		//TODO:
+		//Check for a timeout here and try to send data
+		//if(dataTXRateInMillis <= (lastDataTXTime - systemTick))
+		//Send a new packet and update lastDataTXTime if it returned ok
+	}
+
+	//Send packets as fast as we can
+	//because we have no timers yet
+	if(u32RM4_SCI__Is_TxReady(SCI_CHANNEL__2))
+		vPWRNODE_PICOMMS_TrySend();
 }
 
 
